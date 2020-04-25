@@ -1,0 +1,42 @@
+project.name: tasklist
+
+server:
+  servlet:
+    context-path: '/tasklist'
+
+spring:
+  application:
+    name: ${project.name}
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  datasource:
+    url: jdbc:postgresql://localhost/tasklist
+    username: postgres
+    password: postgres
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: tasklist
+        order_inserts: true
+        format_sql: true
+        enable_lazy_load_no_trans: true
+        cache.use_second_level_cache: false
+        cache.use_query_cache: false
+        generate_statistics: false
+        jdbc:
+          lob.non_contextual_creation: true
+          batch_size: 10000
+          batch_versioned_data: true
+          fetch_size: 10000
+          default_batch_fetch_size: 10000
+      javax.persistence.validation.mode: none
+      open-in-view: false

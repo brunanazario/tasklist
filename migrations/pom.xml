@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nazario</groupId>
+    <artifactId>tasklist</artifactId>
+    <packaging>pom</packaging>
+    <version>dev-migration</version>
+
+    <name>api-tasklist-migration</name>
+    <description>Migrações - Duane</description>
+
+    <properties>
+        <postgresql.version>42.1.4</postgresql.version>
+        <liquibase-maven-plugin.version>3.3.1</liquibase-maven-plugin.version>
+        <databaseUrl>localhost:5432</databaseUrl>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase-maven-plugin.version}</version>
+
+                <configuration>
+                    <contexts>local</contexts>
+                    <changeLogFile>../migrations/db_changelog_master.xml</changeLogFile>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://${databaseUrl}/tasklist</url>
+                    <username>postgres</username>
+                    <password>postgres</password>
+
+                    <dropFirst>false</dropFirst>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <systemProperties>
+                        <property>
+                            <name>changelogSchemaName</name>
+                            <value>tasklist</value>
+                        </property>
+                        <property>
+                            <name>databaseChangeLogTableName</name>
+                            <value>TASKLIST_DATABASECHANGELOG</value>
+                        </property>
+                        <property>
+                            <name>databaseChangeLogLockTableName</name>
+                            <value>TASKLIST_DATABASECHANGELOGLOCK</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${postgresql.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
