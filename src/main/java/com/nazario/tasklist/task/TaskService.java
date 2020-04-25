@@ -24,7 +24,7 @@ public class TaskService {
         return taskRepository.getOne(id);
     }
 
-    public Task create(final Task task){
+    public Task createOrUpdate(final Task task){
         return taskRepository.save(task);
     }
 

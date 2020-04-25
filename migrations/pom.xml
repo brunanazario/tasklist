@@ -9,7 +9,7 @@
     <version>dev-migration</version>
 
     <name>api-tasklist-migration</name>
-    <description>Migrações - Duane</description>
+    <description>Migrações</description>
 
     <properties>
         <postgresql.version>42.1.4</postgresql.version>

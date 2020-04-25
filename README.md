@@ -1,6 +1,12 @@
 # Task List
 
-Este repositório contém a api Task List
+Este repositório contém a api Task List. Foram utilizadas as seguintes tecnologias:
+
+[Spring Boot](https://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/),
+[PostgreSql](https://www.postgresql.org/docs/),
+[Docker](https://docs.docker.com/),
+[Docker-Compose](https://docs.docker.com/compose/),
+[Liquibase](https://www.liquibase.org/documentation/index.html)
 
 - [Quick start](#quickstart)
     - [Pré-requisitos](#prerequisitos)
@@ -9,7 +15,6 @@ Este repositório contém a api Task List
     - [Executando migrações de banco local](#executandomigracoesbancolocal)
     - [Executando migrações de banco local_teste](#executandomigracoesbancotestesit)
 - [Informações adicionais](#infoadicionais)
-    - [Banco de dados](#infoadicionaisbd)
 
 ## Quick start <a name="quickstart"></a>
 

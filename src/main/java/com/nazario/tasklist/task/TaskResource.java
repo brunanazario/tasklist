@@ -28,8 +28,8 @@ public class TaskResource {
     }
 
     @PostMapping
-    private Task create(@RequestBody Task task){
-        return taskService.create(task);
+    private Task createOrUpdate(@RequestBody Task task){
+        return taskService.createOrUpdate(task);
     }
 
     @PutMapping("{id}/doing")
