@@ -28,7 +28,7 @@ public class Task implements Serializable {
     private String title;
 
     @NotNull(message = "Description is required")
-    @Size(min = 1, max = 50, message = "Description size must be between 1 and 50")
+    @Size(min = 1, max = 500, message = "Description size must be between 1 and 500")
     @Column(name = "DESCRIPTION")
     private String description;
 

@@ -54,4 +54,13 @@ public class TaskService {
         return taskRepository.save(taskUpdate);
     }
 
+    public void deleteTask(final UUID id){
+        Task taskDelete = taskRepository.getOne(id);
+        if(taskDelete.getStatus() == Task.Status.DONE){
+            archived(id);
+        }else{
+            taskRepository.deleteById(id);
+        }
+    }
+
 }

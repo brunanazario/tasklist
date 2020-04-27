@@ -57,4 +57,9 @@ public class TaskResource {
         return taskService.archived(id);
     }
 
+    @DeleteMapping("{id}")
+    private void delete(@PathVariable(value = "id") UUID id){
+        taskService.deleteTask(id);
+    }
+
 }
