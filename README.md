@@ -9,7 +9,7 @@ Foram utilizadas as seguintes tecnologias:
 [Docker-Compose](https://docs.docker.com/compose/),
 [Liquibase](https://www.liquibase.org/documentation/index.html)
 
-# Passos para execução do projetot
+# Passos para execução do projeto
 
 Siga as instruções abaixo para executar o projeto localmente.
 
