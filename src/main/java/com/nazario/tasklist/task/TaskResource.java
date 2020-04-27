@@ -17,9 +17,19 @@ public class TaskResource {
     @Autowired
     TaskService taskService;
 
-    @GetMapping
-    private List<Task> getTasks(){
-        return taskService.getTasks();
+    @GetMapping("todo")
+    private Iterable<Task> getToDo(){
+        return taskService.getTaskOfStatus(Task.Status.TO_DO);
+    }
+
+    @GetMapping("doing")
+    private Iterable<Task> getDoing(){
+        return taskService.getTaskOfStatus(Task.Status.DOING);
+    }
+
+    @GetMapping("done")
+    private Iterable<Task> getDone(){
+        return taskService.getTaskOfStatus(Task.Status.DONE);
     }
 
     @GetMapping("{id}")

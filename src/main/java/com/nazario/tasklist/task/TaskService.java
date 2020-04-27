@@ -1,14 +1,17 @@
 package com.nazario.tasklist.task;
 
+import org.hibernate.query.criteria.internal.predicate.BooleanExpressionPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import com.querydsl.core.types.dsl.BooleanExpression;
 
 import java.util.List;
 import java.util.UUID;
 
-@Component
+@Service
 @Transactional
 @SuppressWarnings("WeakerAccess")
 public class TaskService {
@@ -16,8 +19,13 @@ public class TaskService {
     @Autowired
     TaskRepository taskRepository;
 
-    public List<Task> getTasks(){
+    public List<Task> getTasks() {
         return taskRepository.findAll();
+    }
+
+    public Iterable<Task> getTaskOfStatus(Task.Status status){
+        BooleanExpression booleanExpression = QTask.task.status.eq(status);
+        return taskRepository.findAll(booleanExpression);
     }
 
     public Task getTask(final UUID id){
