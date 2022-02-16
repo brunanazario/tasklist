@@ -12,7 +12,7 @@
     <description>Migrações</description>
 
     <properties>
-        <postgresql.version>42.1.4</postgresql.version>
+        <postgresql.version>42.3.3</postgresql.version>
         <liquibase-maven-plugin.version>3.3.1</liquibase-maven-plugin.version>
         <databaseUrl>localhost:5432</databaseUrl>
     </properties>
